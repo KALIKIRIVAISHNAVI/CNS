@@ -28,7 +28,64 @@ becomes C. To change a message back, each letter is replaced by the one three be
 
 
 PROGRAM :-
+```
+DEVELOPED BY : KALIKIRI VAISHNAVI
+REG NO: 212223040081
+```
 
+```
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+void encrypt(char text[], int key) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        char ch = text[i];
+        if (isalpha(ch)) {
+            char base = isupper(ch) ? 'A' : 'a';
+            text[i] = (ch - base + key) % 26 + base;
+        }
+    }
+}
+
+void decrypt(char text[], int key) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        char ch = text[i];
+        if (isalpha(ch)) {
+            char base = isupper(ch) ? 'A' : 'a';
+            text[i] = (ch - base - key + 26) % 26 + base;
+        }
+    }
+}
+
+int main() {
+    char text[100];
+    int key;
+
+    printf("Enter plain text: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = '\0';
+
+    printf("Enter key value: ");
+    scanf("%d", &key);
+
+    encrypt(text, key);
+    printf("\nEncrypted text: %s\n", text);
+
+    decrypt(text, key);
+    printf("Decrypted text: %s\n", text);
+
+    return 0;
+}
+
+```
 
 
 OUTPUT :-
+
+<img width="600" height="243" alt="image" src="https://github.com/user-attachments/assets/3245ed1a-e471-49e8-8bee-eea1d428c4be" />
+
+
+RESULT:-
+Thus, The program to implement caesar cipher  is successfully executed.
+
